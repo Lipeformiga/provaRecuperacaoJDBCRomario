@@ -28,14 +28,15 @@ public class EntregaDAO {
         int pacote_codigo = rs.getInt("pacote_codigo");
         entrega.setPacote(pacoteDAO.findById(pacote_codigo));
 
-//        UsuarioCRUD usuarioCRUD = new UsuarioCRUD();
-//        int usuario_id = rs.getInt("usuario_id");
-//        tarefa.setUsuario(usuarioCRUD.getOne(usuario_id
+        ClienteDAO clienteDAO = new ClienteDAO();
+        long cliente_cpf = rs.getLong("cliente_cpf");
+        entrega.setCliente(clienteDAO.findById(cliente_cpf));
+
         return entrega;
     }
 
     public Entrega findById(int codigo){
-        comando = "select * from entrega where codigo = ?";
+        comando = "select * from ENTREGA where codigo = ?";
         try(Connection con = conexao.obterConexao();
             PreparedStatement ps = con.prepareStatement(comando)){
 
@@ -55,7 +56,7 @@ public class EntregaDAO {
     }
 
     public List<Entrega> findAll(){
-        comando = "select * from entrega";
+        comando = "select * from ENTREGA";
         try(Connection con = conexao.obterConexao();
             PreparedStatement ps = con.prepareStatement(comando);
             ResultSet rs = ps.executeQuery()){
@@ -81,15 +82,18 @@ public class EntregaDAO {
     }
 
     public Entrega create(Entrega entrega){
-        comando = "insert into entrega (descricao, peso, destino, fragil) values (?, ?, ?, ?)";
+        comando = "insert into ENTREGA (drone_codigo, pacote_codigo, cliente_cpf, origem, destino, status, distancia, tempo_estimado) values (?, ?, ?, ?, ?, ?, ?, ?)";
         try(Connection con = conexao.obterConexao();
             PreparedStatement ps = con.prepareStatement(comando, Statement.RETURN_GENERATED_KEYS)) {
 
-            ps.setString(1, entrega.getDescricao());
-            ps.setInt(2, entrega.getPeso());
-            ps.setString(3, entrega.getDestino());
-            ps.setBoolean(4, entrega.isFragil());
-
+            ps.setInt(1, entrega.getDrone().getCodigo());
+            ps.setInt(2, entrega.getPacote().getCodigo());
+            ps.setLong(3, entrega.getCliente().getCpf());
+            ps.setString(4, entrega.getOrigem());
+            ps.setString(5, entrega.getDestino());
+            ps.setString(6, entrega.getStatus());
+            ps.setInt(7, entrega.getDistancia());
+            ps.setInt(8, entrega.getTempoEstimado());
 
             ps.execute();
 
@@ -106,16 +110,20 @@ public class EntregaDAO {
     }
 
     public Entrega update(Entrega entrega){
-        comando = "update entrega set descricao = ?, peso = ?, destino = ?, fragil = ? where codigo = ?";
+        comando = "update ENTREGA set drone_codigo = ?, pacote_codigo = ?, cliente_cpf = ?, origem = ?, destino = ?, status = ?, distancia = ?, tempo_estimado = ? where codigo = ?";
 
         try(Connection con = conexao.obterConexao();
             PreparedStatement ps = con.prepareStatement(comando)){
 
-            ps.setString(1, entrega.getDescricao());
-            ps.setInt(2,entrega.getPeso());
-            ps.setString(3,entrega.getDestino());
-            ps.setBoolean(4,entrega.isFragil());
-            ps.setInt(5, entrega.getCodigo());
+            ps.setInt(1, entrega.getDrone().getCodigo());
+            ps.setInt(2, entrega.getPacote().getCodigo());
+            ps.setLong(3, entrega.getCliente().getCpf());
+            ps.setString(4, entrega.getOrigem());
+            ps.setString(5, entrega.getDestino());
+            ps.setString(6, entrega.getStatus());
+            ps.setInt(7, entrega.getDistancia());
+            ps.setInt(8, entrega.getTempoEstimado());
+            ps.setInt(9, entrega.getCodigo());
 
             ps.execute();
 
@@ -126,7 +134,7 @@ public class EntregaDAO {
     }
 
     public void delete(int codigo){
-        comando = "delete from entrega where codigo = ?";
+        comando = "delete from ENTREGA where codigo = ?";
         try(Connection con = conexao.obterConexao();
             PreparedStatement ps = con.prepareStatement(comando)){
 

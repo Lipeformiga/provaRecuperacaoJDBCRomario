@@ -12,6 +12,8 @@ public class Entrega {
     private int distancia;
     private int tempoEstimado;
 
+    private Cliente cliente;
+
     public int getCodigo() {
         return codigo;
     }
@@ -74,5 +76,13 @@ public class Entrega {
 
     public void setTempoEstimado(int tempoEstimado) {
         this.tempoEstimado = tempoEstimado;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }

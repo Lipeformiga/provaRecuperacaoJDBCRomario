@@ -1,11 +1,14 @@
 package br.senai.sc.drones;
 
+import java.util.List;
+
 public class Cliente {
 
     private long cpf;
     private String nome;
     private String endereco;
     private String senha;
+    private List<Entrega> historicoEntregas;
 
     public long getCpf() {
         return cpf;
