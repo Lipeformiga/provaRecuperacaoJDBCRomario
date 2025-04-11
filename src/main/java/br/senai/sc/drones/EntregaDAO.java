@@ -4,6 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Objects;
 
 public class EntregaDAO {
 
@@ -95,15 +96,20 @@ public class EntregaDAO {
             ps.setInt(7, entrega.getDistancia());
             ps.setInt(8, entrega.getTempoEstimado());
 
-            ps.execute();
+            if (!Objects.equals(entrega.getPacote().getDestino(), entrega.getDestino())){
+                throw new IllegalArgumentException();
+            } else {
+                ps.execute();
 
-            try (ResultSet rs = ps.getGeneratedKeys()){
-                if (rs.next()){
-                    entrega.setCodigo(rs.getInt(1));
+                try (ResultSet rs = ps.getGeneratedKeys()){
+                    if (rs.next()){
+                        entrega.setCodigo(rs.getInt(1));
+                    }
                 }
+
+                return entrega;
             }
 
-            return entrega;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
