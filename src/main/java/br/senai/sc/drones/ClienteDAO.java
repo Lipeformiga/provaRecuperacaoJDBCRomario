@@ -68,7 +68,7 @@ public class ClienteDAO {
     }
 
     public Cliente create(Cliente cliente){
-        comando = "insert into CLIENTE (cpf, nome, endereco, senha) values (?, ?, ?)";
+        comando = "insert into CLIENTE (cpf, nome, endereco, senha) values (?, ?, ?, ?)";
         try(Connection con = conexao.obterConexao();
             PreparedStatement ps = con.prepareStatement(comando, Statement.RETURN_GENERATED_KEYS)) {
 
@@ -109,12 +109,14 @@ public class ClienteDAO {
         try(Connection con = conexao.obterConexao();
             PreparedStatement ps = con.prepareStatement(comando)){
 
+            EntregaDAO entregaDAO = new EntregaDAO();
+
             ps.setLong(1,cpf);
 
             ps.execute();
 
         } catch (SQLException e){
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException (e);
         }
     }
 }

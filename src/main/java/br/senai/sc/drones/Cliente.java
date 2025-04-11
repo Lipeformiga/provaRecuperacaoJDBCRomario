@@ -10,6 +10,16 @@ public class Cliente {
     private String senha;
     private List<Entrega> historicoEntregas;
 
+    public Cliente(long cpf, String nome, String endereco, String senha) {
+        this.cpf = cpf;
+        this.nome = nome;
+        this.endereco = endereco;
+        this.senha = senha;
+    }
+
+    public Cliente() {
+    }
+
     public long getCpf() {
         return cpf;
     }

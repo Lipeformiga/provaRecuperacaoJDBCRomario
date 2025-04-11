@@ -123,7 +123,7 @@ public class PacoteDAO {
             ps.execute();
 
         } catch (SQLException e){
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException (e);
         }
     }
 

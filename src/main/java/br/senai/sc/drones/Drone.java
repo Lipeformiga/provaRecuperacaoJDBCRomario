@@ -12,6 +12,34 @@ public class Drone {
     private int capacidadeCarga;
     private boolean permiteCargaFragil;
 
+    public Drone() {
+    }
+
+    public Drone(int codigo, String modelo, boolean disponivel, int bateria, String localizacao, boolean emVoo, int cargaAtual, int capacidadeCarga, boolean permiteCargaFragil) {
+        this.codigo = codigo;
+        this.modelo = modelo;
+        this.disponivel = disponivel;
+        this.bateria = bateria;
+        this.localizacao = localizacao;
+        this.emVoo = emVoo;
+        this.cargaAtual = cargaAtual;
+        this.capacidadeCarga = capacidadeCarga;
+        this.permiteCargaFragil = permiteCargaFragil;
+    }
+
+    public Drone(String modelo, boolean disponivel, int bateria, String localizacao, boolean emVoo, int cargaAtual, int capacidadeCarga, boolean permiteCargaFragil) {
+        this.modelo = modelo;
+        this.disponivel = disponivel;
+        this.bateria = bateria;
+        this.localizacao = localizacao;
+        this.emVoo = emVoo;
+        this.cargaAtual = cargaAtual;
+        this.capacidadeCarga = capacidadeCarga;
+        this.permiteCargaFragil = permiteCargaFragil;
+    }
+
+
+
     public int getCodigo() {
         return codigo;
     }

@@ -14,6 +14,20 @@ public class Entrega {
 
     private Cliente cliente;
 
+    public Entrega() {
+    }
+
+    public Entrega(Drone drone, Pacote pacote, String origem, String destino, String status, int distancia, int tempoEstimado, Cliente cliente) {
+        this.drone = drone;
+        this.pacote = pacote;
+        this.origem = origem;
+        this.destino = destino;
+        this.status = status;
+        this.distancia = distancia;
+        this.tempoEstimado = tempoEstimado;
+        this.cliente = cliente;
+    }
+
     public int getCodigo() {
         return codigo;
     }

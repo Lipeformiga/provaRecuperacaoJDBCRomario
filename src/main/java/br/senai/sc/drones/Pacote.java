@@ -8,6 +8,16 @@ public class Pacote {
     private String destino;
     private boolean fragil;
 
+    public Pacote() {
+    }
+
+    public Pacote(String descricao, int peso, String destino, boolean fragil) {
+        this.descricao = descricao;
+        this.peso = peso;
+        this.destino = destino;
+        this.fragil = fragil;
+    }
+
     public int getCodigo() {
         return codigo;
     }

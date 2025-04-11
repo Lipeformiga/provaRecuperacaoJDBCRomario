@@ -82,8 +82,9 @@ public class DroneDAO {
             ps.setInt(3, drone.getBateria());
             ps.setString(4, drone.getLocalizacao());
             ps.setBoolean(5, drone.isEmVoo());
-            ps.setInt(6, drone.getCapacidadeCarga());
-            ps.setBoolean(7, drone.isPermiteCargaFragil());
+            ps.setInt(6, drone.getCargaAtual());
+            ps.setInt(7, drone.getCapacidadeCarga());
+            ps.setBoolean(8, drone.isPermiteCargaFragil());
 
             ps.execute();
 
@@ -100,7 +101,7 @@ public class DroneDAO {
     }
 
     public Drone update(Drone drone){
-        comando = "update DRONE set modelo = ?, disponivel = ?, bateria = ?, localizacao = ?, em_voo = ?, carga_atual  = ?, capacidade_carga  = ?, permitir_carga_fragil = ? where codigo = ?";
+        comando = "update DRONE set modelo = ?, disponivel = ?, bateria = ?, localizacao = ?, em_voo = ?, carga_atual = ?, capacidade_carga = ?, permitir_carga_fragil = ? where codigo = ?";
 
         try(Connection con = conexao.obterConexao();
             PreparedStatement ps = con.prepareStatement(comando)){
@@ -132,7 +133,7 @@ public class DroneDAO {
             ps.execute();
 
         } catch (SQLException e){
-            throw new RuntimeException(e);
+            throw new IllegalArgumentException(e);
         }
     }
 

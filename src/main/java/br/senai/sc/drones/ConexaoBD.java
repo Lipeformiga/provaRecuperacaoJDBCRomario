@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class ConexaoBD {
 
-    private String URL = "jjdbc:mysql://mi75.mysql.database.azure.com/db_filipef";
+    private String URL = "jdbc:mysql://mi75.mysql.database.azure.com/db_filipef";
     private final String USER = "mi75";
     private final String PASSWORD = "Temporario18!";
 
