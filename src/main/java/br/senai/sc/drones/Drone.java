@@ -83,4 +83,19 @@ public class Drone {
     public void setPermiteCargaFragil(boolean permiteCargaFragil) {
         this.permiteCargaFragil = permiteCargaFragil;
     }
+
+    @Override
+    public String toString() {
+        return "Drone{" +
+                "codigo=" + codigo +
+                ", modelo='" + modelo + '\'' +
+                ", disponivel=" + disponivel +
+                ", bateria=" + bateria +
+                ", localizacao='" + localizacao + '\'' +
+                ", emVoo=" + emVoo +
+                ", cargaAtual=" + cargaAtual +
+                ", capacidadeCarga=" + capacidadeCarga +
+                ", permiteCargaFragil=" + permiteCargaFragil +
+                '}';
+    }
 }

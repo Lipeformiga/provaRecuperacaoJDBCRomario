@@ -41,4 +41,14 @@ public class Cliente {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "cpf=" + cpf +
+                ", nome='" + nome + '\'' +
+                ", endereco='" + endereco + '\'' +
+                ", senha='" + senha + '\'' +
+                '}';
+    }
 }

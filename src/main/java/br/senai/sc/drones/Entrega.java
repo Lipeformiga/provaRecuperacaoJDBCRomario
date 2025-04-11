@@ -85,4 +85,18 @@ public class Entrega {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    @Override
+    public String toString() {
+        return "Entrega{" +
+                "codigo=" + codigo +
+                ", drone=" + drone +
+                ", pacote=" + pacote +
+                ", origem='" + origem + '\'' +
+                ", destino='" + destino + '\'' +
+                ", status='" + status + '\'' +
+                ", distancia=" + distancia +
+                ", tempoEstimado=" + tempoEstimado +
+                '}';
+    }
 }

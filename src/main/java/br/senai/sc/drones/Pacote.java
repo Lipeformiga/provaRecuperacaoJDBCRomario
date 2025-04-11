@@ -47,4 +47,15 @@ public class Pacote {
     public void setFragil(boolean fragil) {
         this.fragil = fragil;
     }
+
+    @Override
+    public String toString() {
+        return "Pacote{" +
+                "codigo=" + codigo +
+                ", descricao='" + descricao + '\'' +
+                ", peso=" + peso +
+                ", destino='" + destino + '\'' +
+                ", fragil=" + fragil +
+                '}';
+    }
 }
