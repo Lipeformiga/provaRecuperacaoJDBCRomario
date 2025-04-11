@@ -135,7 +135,7 @@ public class EntregaDAO {
 
             return entrega;
         } catch (SQLException e){
-            throw new RuntimeException(e);
+            throw new NoSuchElementException(e);
         }
     }
 
